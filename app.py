@@ -11,3 +11,5 @@ for s, step in enumerate(bridge):
     bridge_box.bar_chart(bridge)
     if bridge[s] == 0:
         break
+
+rerun = st.button("Rerun")

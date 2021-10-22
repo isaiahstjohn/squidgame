@@ -10,6 +10,7 @@ def altair_chart(points):
     chart = alt.Chart(data).mark_point().encode(
         x = 'Players',
         y = 'Survivors',
+        size = 200,
         tooltip = ['Players', 'Survivors']
     ).properties(
         width = 600,

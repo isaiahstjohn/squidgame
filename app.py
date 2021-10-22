@@ -77,6 +77,7 @@ for i in range(iterations):
                 break
             else:
                 last_step_reached = step + 1
+        st.write(f"""--- POINT[{players}, {survivors/players}] ---""")
         points.append([players, survivors/players]) 
         if any_survivors and update_chart:
             scatter_box.altair_chart(altair_chart(points))

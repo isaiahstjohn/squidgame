@@ -44,7 +44,7 @@ def altair_chart(points):
     )
     return chart
 points = []
-bridge = [0.1]*20
+bridge_template = [0]*20
 header_box = st.empty()
 sub_box = st.empty()
 bridge_box = st.empty()
@@ -55,7 +55,7 @@ for players in range(min_players, max_players + 1):
     survivors = 0
     for player in range(players):
         sub_box.subheader(f"Player {player + 1}")
-        bridge = []
+        bridge = bridge_template[:]
         for step in range(1, steps + 1):
             alive = random.choice([True, False])
             bridge.append(1 if alive else 0)

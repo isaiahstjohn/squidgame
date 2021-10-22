@@ -15,7 +15,8 @@ def altair_chart(points):
         x = 'Players',
         y = 'Survivors',
         size = 'size',
-        tooltip = ['Players', 'Survivors']
+        tooltip = ['Players', 'Survivors'],
+        legend = None,
     ).properties(
         width = 600,
         height = 400,

@@ -47,8 +47,8 @@ def altair_chart(points):
     ).configure_mark(
         shape = "square",
         filled = True,
-        color = "#FF0000",
-        opacity = 0.1,
+        color = "#990000",
+        opacity = 0.05,
         size = 9900,
     )
     return chart

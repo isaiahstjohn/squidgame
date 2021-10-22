@@ -54,7 +54,7 @@ for players in range(min_players, max_players + 1):
     header_box.header(f"{players} players")
     survivors = 0
     for player in range(players):
-        sub_box.subheader(f"Player {player}")
+        sub_box.subheader(f"Player {player + 1}")
         bridge = []
         for step in range(1, steps + 1):
             alive = random.choice([True, False])

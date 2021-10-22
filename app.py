@@ -44,12 +44,13 @@ def altair_chart(points):
     )
     return chart
 points = []
-bridge_template = [0]*20
+bridge_template = [0]*steps
 header_box = st.empty()
 sub_box = st.empty()
 bridge_box = st.empty()
 scatter_box = st.empty()
 
+any_survivors = False
 for players in range(min_players, max_players + 1):
     header_box.header(f"{players} players")
     survivors = 0
@@ -58,13 +59,16 @@ for players in range(min_players, max_players + 1):
         bridge = bridge_template[:]
         for step in range(1, steps + 1):
             alive = random.choice([True, False])
-            bridge.append(1 if alive else 0)
-            bridge_box.bar_chart(bridge)
+            bridge[step - 1] = 1 if alive else 0
+            if any_survivors:
+                bridge_box.bar_chart(bridge)
             if not alive:
                 break
         if alive: 
             survivors = players - player
+            any_survivors = True
     points.append([players, survivors]) 
-    scatter_box.altair_chart(altair_chart(points))
+    if any_survivors:
+        scatter_box.altair_chart(altair_chart(points))
 
 rerun = st.button("Rerun")

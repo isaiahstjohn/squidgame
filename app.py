@@ -44,29 +44,26 @@ def altair_chart(points):
     )
     return chart
 points = []
-bridge_template = [0]*steps
 header_box = st.empty()
 sub_box = st.empty()
-bridge_box = st.empty()
 scatter_box = st.empty()
 
 any_survivors = False
 for players in range(min_players, max_players + 1):
     header_box.header(f"{players} players")
     survivors = 0
+    last_step_reached = 0
     for player in range(players):
-        sub_box.subheader(f"Player {player + 1}")
-        bridge = bridge_template[:]
-        for step in range(1, steps + 1):
+        for step in range(last_step_reached, steps):
             alive = random.choice([True, False])
-            bridge[step - 1] = 1 if alive else 0
-            if any_survivors:
-                bridge_box.bar_chart(bridge)
             if not alive:
                 break
         if alive: 
             survivors = players - player
             any_survivors = True
+            break
+        else:
+            last_step_reached = step + 1
     points.append([players, survivors]) 
     if any_survivors:
         scatter_box.altair_chart(altair_chart(points))

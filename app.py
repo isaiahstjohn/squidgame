@@ -6,7 +6,11 @@ import altair as alt
 
 def altair_chart(points):
     players, survivors = (list(axis) for axis in zip(*points))
-    data = pd.DataFrame({'Players': players, 'Survivors': survivors, 'size' = [300]*len(players)})
+    data = pd.DataFrame({
+        'Players': players, 
+        'Survivors': survivors, 
+        'size': [300]*len(players),
+    })
     chart = alt.Chart(data).mark_point().encode(
         x = 'Players',
         y = 'Survivors',

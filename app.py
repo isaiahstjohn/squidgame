@@ -18,7 +18,7 @@ def altair_chart(points):
         shape = "circle",
         filled = True,
         color = "#FF0000",
-        size = 300,
+        size = 900,
     )
     return chart
 points = []

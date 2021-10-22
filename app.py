@@ -13,7 +13,7 @@ min_players = st.slider(
 max_players = st.slider(
     "Maximum players",
     min_value = min_players,
-    max_value = 100 if min_value < 100 or 101,
+    max_value = 100 if min_value < 100 else 101,
     step = 1)
 
 steps = st.slider(

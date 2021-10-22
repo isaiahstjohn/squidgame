@@ -28,8 +28,6 @@ iterations = st.slider(
     max_value = 1000,
     step = 1)
 
-update_chart = st.checkbox("Update chart during simulation")
-
 def altair_chart(points):
     players, survivors = (list(axis) for axis in zip(*points))
     data = pd.DataFrame({
@@ -56,7 +54,6 @@ points = []
 progress_box = st.empty()
 scatter_box = st.empty()
 
-any_survivors = False
 for i in range(iterations):
     if i % 20 == 0:
         progress_box.progress(i/iterations)
@@ -66,7 +63,6 @@ for i in range(iterations):
         for player in range(players):
             if last_step_reached == steps:
                 survivors = players - player
-                any_survivors = True
                 break
             for step in range(last_step_reached, steps):
                 alive = random.choice([True, False])
@@ -74,14 +70,11 @@ for i in range(iterations):
                     break
             if alive:
                 survivors = players - player
-                any_survivors = True
                 break
             else:
                 last_step_reached = step + 1
         points.append([players, survivors/players]) 
-        if any_survivors and update_chart:
-            scatter_box.altair_chart(altair_chart(points))
-progress_box.empty()
 scatter_box.altair_chart(altair_chart(points))
+progress_box.empty()
 
 rerun = st.button("Rerun")

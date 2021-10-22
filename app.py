@@ -53,14 +53,14 @@ def altair_chart(points):
     )
     return chart
 points = []
-header_box = st.empty()
-sub_box = st.empty()
+progress_box = st.empty()
 scatter_box = st.empty()
 
 any_survivors = False
 for i in range(iterations):
+    if i % 20 == 0:
+        progress_box.progress(i/iterations)
     for players in range(min_players, max_players + 1):
-        header_box.header(f"{players} players")
         survivors = 0
         last_step_reached = 0
         for player in range(players):
@@ -81,6 +81,7 @@ for i in range(iterations):
         points.append([players, survivors/players]) 
         if any_survivors and update_chart:
             scatter_box.altair_chart(altair_chart(points))
+progress_box.empty()
 scatter_box.altair_chart(altair_chart(points))
 
 rerun = st.button("Rerun")

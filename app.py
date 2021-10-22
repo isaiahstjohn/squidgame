@@ -15,7 +15,7 @@ def altair_chart(points):
         width = 600,
         height = 400,
     ).configure_mark(
-        shape = "circle",
+        shape = "square",
         filled = True,
         color = "#FF0000",
         size = 9900,

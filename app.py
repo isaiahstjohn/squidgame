@@ -70,9 +70,6 @@ for i in range(iterations):
                 break
             for step in range(last_step_reached, steps):
                 alive = random.choice([True, False])
-                st.write(f"""
-{player} of {players}:
-  {last_step_reached=}, {step=}, {steps=}, {alive=}""")
                 if not alive:
                     break
             if alive:
@@ -81,7 +78,6 @@ for i in range(iterations):
                 break
             else:
                 last_step_reached = step + 1
-        st.write(f"""--- POINT[{players}, {survivors/players}] ---""")
         points.append([players, survivors/players]) 
         if any_survivors and update_chart:
             scatter_box.altair_chart(altair_chart(points))

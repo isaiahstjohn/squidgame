@@ -3,4 +3,4 @@ import time
 x = st.slider("Value", 1, 10)
 while x < 10:
     x += 1
-    st.write("*"*x)
+    st.write("|X| "*x)

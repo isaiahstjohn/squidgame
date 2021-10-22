@@ -13,7 +13,7 @@ def altair_chart(points):
         tooltip = ['Players', 'Survivors']
     ).properties(
         width = 600,
-        height = 400,
+        #height = 400,
     ).configure_mark(
         shape = "circle",
         filled = True,

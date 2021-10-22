@@ -74,7 +74,7 @@ for i in range(iterations):
                 break
             else:
                 last_step_reached = step + 1
-        points.append([players, survivors]) 
+        points.append([players, survivors/players]) 
         if any_survivors and update_chart:
             scatter_box.altair_chart(altair_chart(points))
 scatter_box.altair_chart(altair_chart(points))

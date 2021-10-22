@@ -22,6 +22,12 @@ steps = st.slider(
     max_value = 20,
     step = 1)
 
+iterations = st.slider(
+    "Number of trials to run",
+    min_value = 1,
+    max_value = 20,
+    step = 1)
+
 def altair_chart(points):
     players, survivors = (list(axis) for axis in zip(*points))
     data = pd.DataFrame({
@@ -49,23 +55,24 @@ sub_box = st.empty()
 scatter_box = st.empty()
 
 any_survivors = False
-for players in range(min_players, max_players + 1):
-    header_box.header(f"{players} players")
-    survivors = 0
-    last_step_reached = 0
-    for player in range(players):
-        for step in range(last_step_reached, steps):
-            alive = random.choice([True, False])
-            if not alive:
+for i in range(iterations):
+    for players in range(min_players, max_players + 1):
+        header_box.header(f"{players} players")
+        survivors = 0
+        last_step_reached = 0
+        for player in range(players):
+            for step in range(last_step_reached, steps):
+                alive = random.choice([True, False])
+                if not alive:
+                    break
+            if alive: 
+                survivors = players - player
+                any_survivors = True
                 break
-        if alive: 
-            survivors = players - player
-            any_survivors = True
-            break
-        else:
-            last_step_reached = step + 1
-    points.append([players, survivors]) 
-    if any_survivors:
-        scatter_box.altair_chart(altair_chart(points))
+            else:
+                last_step_reached = step + 1
+        points.append([players, survivors]) 
+        if any_survivors:
+            scatter_box.altair_chart(altair_chart(points))
 
 rerun = st.button("Rerun")

@@ -1,3 +1,6 @@
 import streamlit as st
-
-st.write("Hello world!")
+import time
+x = 0
+while True:
+    x += 1
+    st.write("*"*x)

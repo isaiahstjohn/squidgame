@@ -7,25 +7,25 @@ import altair as alt
 min_players = st.slider(
     "Minimum players",
     min_value = 1,
-    max_value = 20,
+    max_value = 100,
     step = 1)
 
 max_players = st.slider(
     "Maximum players",
     min_value = min_players,
-    max_value = 20,
+    max_value = 100,
     step = 1)
 
 steps = st.slider(
     "Number of glass steps on the bridge",
     min_value = 1,
-    max_value = 20,
+    max_value = 100,
     step = 1)
 
 iterations = st.slider(
     "Number of trials to run",
     min_value = 1,
-    max_value = 100,
+    max_value = 1000,
     step = 1)
 
 update_chart = st.checkbox("Update chart during simulation")

@@ -9,12 +9,11 @@ def altair_chart(points):
     data = pd.DataFrame({
         'Players': players, 
         'Survivors': survivors, 
-        'size': [300]*len(players),
     })
     chart = alt.Chart(data).mark_point().encode(
         x = 'Players',
         y = 'Survivors',
-        size = 'size',
+        size = alt.value(300),
         color = alt.Color(legend = None),
         tooltip = ['Players', 'Survivors'],
     ).properties(

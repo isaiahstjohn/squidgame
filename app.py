@@ -23,7 +23,7 @@ bridge = [0]*10
 
 
 for s, step in enumerate(bridge):
-    ch = random.choice([0, 1])
+    ch = random.choice([1, 2])
     bridge[s] = ch
     points.append([s, ch])
     scatter_box.altair_chart(altair_chart(points))

@@ -56,7 +56,7 @@ scatter_box = st.empty()
 
 for i in range(iterations):
     if i % 20 == 0:
-        progress_box.progress((i+1)/iterations)
+        progress_box.progress(i/iterations)
     for players in range(min_players, max_players + 1):
         survivors = 0
         last_step_reached = 0

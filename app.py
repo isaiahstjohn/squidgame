@@ -13,17 +13,20 @@ def altair_chart(points):
         tooltip = ['Players', 'Survivors']
     )
     return chart
-points = [[2, 0], [3, 1], [4, 4]]
+points = []
 bridge_box = st.empty()
 scatter_box = st.empty()
-scatter = st.altair_chart(altair_chart(points))
-bridge = bridge_box.bar_chart([], width = 20, height = 2)
+bridge_box.bar_chart([], width = 20, height = 2)
+scatter_box.altair_chart(altair_chart(points))
 
 bridge = [0]*10
 
 
 for s, step in enumerate(bridge):
-    bridge[s] = random.choice([0, 1])
+    ch = random.choice([0, 1])
+    bridge[s] = ch
+    points.append([s, ch])
+    scatter_box.altair_chart(altair_chart(points))
     bridge_box.bar_chart(bridge)
     if bridge[s] == 0:
         break

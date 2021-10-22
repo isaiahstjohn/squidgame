@@ -25,8 +25,10 @@ steps = st.slider(
 iterations = st.slider(
     "Number of trials to run",
     min_value = 1,
-    max_value = 20,
+    max_value = 100,
     step = 1)
+
+update_chart = st.checkbox("Update chart during simulation")
 
 def altair_chart(points):
     players, survivors = (list(axis) for axis in zip(*points))
@@ -37,7 +39,7 @@ def altair_chart(points):
     chart = alt.Chart(data).mark_point().encode(
         x = 'Players',
         y = 'Survivors',
-        size = alt.value(300),
+        size = alt.value(100),
         tooltip = ['Players', 'Survivors'],
     ).properties(
         width = 600,
@@ -72,7 +74,8 @@ for i in range(iterations):
             else:
                 last_step_reached = step + 1
         points.append([players, survivors]) 
-        if any_survivors:
+        if any_survivors and update_chart:
             scatter_box.altair_chart(altair_chart(points))
+scatter_box.altair_chart(altair_chart(points))
 
 rerun = st.button("Rerun")

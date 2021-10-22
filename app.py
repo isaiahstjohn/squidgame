@@ -66,7 +66,7 @@ for i in range(iterations):
         for player in range(players):
             for step in range(last_step_reached, steps):
                 alive = random.choice([True, False])
-                st.write(f"{last_step_reached=}, {step=}, {steps=}, {alive=}")
+                st.write(f"{players=}, {last_step_reached=}, {step=}, {steps=}, {alive=}")
                 if not alive:
                     break
             if alive: 

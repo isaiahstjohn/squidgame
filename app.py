@@ -6,7 +6,7 @@ bridge = [0]*10
 
 
 bridge_box = st.empty()
-for s, step in range(bridge):
+for s, step in enumerate(bridge):
     bridge[s] = random.choice([0, 10])
     bridge_box.bar_chart(bridge)
     if bridge[s] == 0:

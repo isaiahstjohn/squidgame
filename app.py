@@ -14,6 +14,10 @@ def altair_chart(points):
     ).properties(
         width = 600,
         height = 400,
+    ).configure_mark(
+        shape = "circle",
+        filled = True,
+        color = "#FF0000",
     )
     return chart
 points = []

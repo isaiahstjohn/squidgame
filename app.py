@@ -44,7 +44,7 @@ def altair_chart(points):
     )
     return chart
 points = []
-bridge = [0]*20
+bridge = [0.1]*20
 header_box = st.empty()
 sub_box = st.empty()
 bridge_box = st.empty()

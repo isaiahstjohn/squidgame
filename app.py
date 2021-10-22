@@ -16,8 +16,8 @@ def altair_chart(points):
 points = []
 bridge_box = st.empty()
 scatter_box = st.empty()
-bridge_box.bar_chart([], width = 20, height = 2)
-scatter_box.altair_chart(altair_chart(points))
+#bridge_box.bar_chart([], width = 20, height = 2)
+#scatter_box.altair_chart(altair_chart(points))
 
 bridge = [0]*10
 
